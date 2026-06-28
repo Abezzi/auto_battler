@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bwnj5wsq12x7l"]
+
+[ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_fmv3f"]
+[ext_resource type="Script" uid="uid://b2hxj48y3f5mf" path="res://scenes/unit/unit.gd" id="1_fvc8g"]
+[ext_resource type="Resource" uid="uid://b63lvidb0f5uj" path="res://data/units/warrior.tres" id="2_vh40f"]
+[ext_resource type="Script" uid="uid://badqhow6benlo" path="res://components/drag_and_drop.gd" id="4_bhlit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olpmc"]
+size = Vector2(36, 36)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmv3f"]
+bg_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvc8g"]
+bg_color = Color(0.54901963, 0.78431374, 0.37254903, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vh40f"]
+bg_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhlit"]
+bg_color = Color(0.5019608, 0.627451, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.03137255, 0.03137255, 0.03137255, 1)
+
+[node name="Unit" type="Area2D" unique_id=807760215]
+script = ExtResource("1_fvc8g")
+stats = ExtResource("2_vh40f")
+
+[node name="Skin" type="Sprite2D" parent="." unique_id=828483900]
+position = Vector2(16, 8)
+texture = ExtResource("1_fmv3f")
+region_enabled = true
+region_rect = Rect2(32, 96, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=821213120]
+position = Vector2(16, 8)
+shape = SubResource("RectangleShape2D_olpmc")
+
+[node name="HealthProgressBar" type="ProgressBar" parent="." unique_id=235906240]
+offset_top = -20.0
+offset_right = 30.0
+offset_bottom = -14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fmv3f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fvc8g")
+show_percentage = false
+
+[node name="ManaProgressBar" type="ProgressBar" parent="." unique_id=905475583]
+offset_top = -15.0
+offset_right = 30.0
+offset_bottom = -11.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vh40f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bhlit")
+show_percentage = false
+
+[node name="DragAndDrop" type="Node" parent="." unique_id=783943245 node_paths=PackedStringArray("target")]
+script = ExtResource("4_bhlit")
+target = NodePath("..")

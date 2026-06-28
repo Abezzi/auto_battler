@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitStats" format=3 uid="uid://b63lvidb0f5uj"]
+
+[ext_resource type="Script" uid="uid://donkg1p1l5ble" path="res://data/units/unit_stats.gd" id="1_eb5xf"]
+
+[resource]
+script = ExtResource("1_eb5xf")
+name = "Warrior"
+skin_coordinates = Vector2i(1, 3)
+metadata/_custom_type_script = "uid://donkg1p1l5ble"
